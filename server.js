@@ -1,15 +1,16 @@
 var express = require ('express'),
-	favicon = require('serve-favicon'),
+	// favicon = require('express-favicon'),
 	mongoose = require('mongoose'),
 	bodyParser = require('body-parser'),
 
 	app = express();
-	// app.use(favicon(__dirname + 'favicon.ico'));
+	// app.use(favicon(__dirname + '/public/favicon.ico'));
 
 mongoose.connect(
-	process.env.MONGOLAB_URI ||
-	process.env.MONGOHQ_URL ||
-	'mongodb://localhost/me_eat_now'
+  process.env.MONGOLAB_URI ||
+  process.env.MONGOHQ_URL ||
+  'mongodb://localhost/test' // plug in the db name you've been using
+);
 );
 
 var Restaurant = require('./models/user');
