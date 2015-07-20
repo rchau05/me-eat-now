@@ -3,8 +3,13 @@ var express = require ('express'),
 	mongoose = require('mongoose'),
 	bodyParser = require('body-parser');
 
-mongoose.connect('mongodb://localhost/test')
-var Restaurant = require('./models/user')
+mongoose.connect(
+	process.env.MONGOLAB_URI ||
+	process.env.MONGOHQ_URL ||
+	'mongodb://localhost/test'
+);
+
+var Restaurant = require('./models/user');
 
 // serve js and css files from public 
 // app.use(express.static(__dirname + '/public/views'));
