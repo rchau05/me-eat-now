@@ -19,9 +19,6 @@ var Restaurant = require('./models/user');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-// set our port
-var port = process.env.PORT || 8080;
-
 //routes for api
 var router = express.Router();
 
