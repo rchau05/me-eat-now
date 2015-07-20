@@ -1,0 +1,185 @@
+h2{
+	color: white;
+    display: inline;
+    font-family: 'Chewy', cursive;
+    margin-left: 2em;
+    text-align: center;
+    vertical-align: center;
+    width:100%;
+}
+
+iframe{
+	height: 100%;
+	width: 100%;
+	margin: 0 auto;
+	position: absolute;
+}
+
+.btn-group{
+    display: inline;
+    margin: 1em;
+}
+
+.header, .navbar-header, .navbar {
+    background-color: green!important;
+	border-radius: 0px;
+	height: 5em;
+	border:none;
+	margin-bottom: 0px;
+}
+
+.nav{
+	margin-right: 1em;
+	margin-top: .65em!important;
+}
+
+.sidebar-brand li {
+    border-top: .5em;
+    border-bottom: .5em;
+}
+
+#search{
+	border-bottom: 4em;
+}
+
+#sidebar-wrapper{
+	height: 100%;
+	background-color: green;
+}
+
+/*!
+ Stylesheet from Iron Summit Media
+ link: http://ironsummitmedia.github.io/startbootstrap-simple-sidebar/
+ */
+
+/* Toggle Styles */
+h2{
+    text-align: center;
+}
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 250px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background: rgba(0,150,0,.7);
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #0f0;
+    background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #fff;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #0f0;
+    background: none;
+}
+
+@media(min-width:768px) {
+    .btn-group{
+        display: none;
+    }
+
+    .navbar-default{
+        background-image: none;
+        background-color: green!important;
+    }
+
+    #wrapper {
+        padding-left: 250px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 250px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+}
