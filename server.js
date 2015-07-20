@@ -100,5 +100,6 @@ router.route('/restaurants/:restaurant_id')
 //register our routes
 app.use('/api', router)
 
-app.listen(port)
+app.listen(process.env.PORT || 3000, function(){
 console.log('It works!')
+});
