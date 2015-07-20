@@ -11,7 +11,6 @@ mongoose.connect(
   process.env.MONGOHQ_URL ||
   'mongodb://localhost/test' // plug in the db name you've been using
 );
-);
 
 var Restaurant = require('./models/user');
 
