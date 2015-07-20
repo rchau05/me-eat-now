@@ -1,7 +1,10 @@
 var express = require ('express'),
-	app = express(),
+	favicon = require('serve-favicon'),
 	mongoose = require('mongoose'),
-	bodyParser = require('body-parser');
+	bodyParser = require('body-parser'),
+
+	app = express();
+	// app.use(favicon(__dirname + 'favicon.ico'));
 
 mongoose.connect(
 	process.env.MONGOLAB_URI ||
@@ -12,7 +15,7 @@ mongoose.connect(
 var Restaurant = require('./models/user');
 
 // serve js and css files from public 
-// app.use(express.static(__dirname + '/public/views'));
+app.use(express.static(__dirname + '/public/views'));
 
 // tell app to use bodyParser middleware
 // this will let us get data from POST
@@ -29,7 +32,7 @@ router.use(function(req, res, next) {
 });
 
 router.get('/', function(req, res) {
-    res.json('yay it works!');   
+    res.sendFile('/index.html');   
 });
 
 router.route('/restaurants') 
