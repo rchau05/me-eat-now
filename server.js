@@ -6,7 +6,7 @@ var express = require ('express'),
 mongoose.connect(
 	process.env.MONGOLAB_URI ||
 	process.env.MONGOHQ_URL ||
-	'mongodb://localhost/test'
+	'mongodb://localhost/me_eat_now'
 );
 
 var Restaurant = require('./models/user');
