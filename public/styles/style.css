@@ -157,6 +157,25 @@ h2{
         background-color: green!important;
     }
 
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+
+    #list-title {
+        text-decoration: underline;
+        font-weight: bold;
+    }
+
+    #login {
+        text-align: center;
+        font-weight: bold;
+    }
+
+    #rest-list {
+        color: white;
+    }
+
     #wrapper {
         padding-left: 250px;
     }
@@ -171,11 +190,6 @@ h2{
 
     #wrapper.toggled #sidebar-wrapper {
         width: 0;
-    }
-
-    #page-content-wrapper {
-        padding: 20px;
-        position: relative;
     }
 
     #wrapper.toggled #page-content-wrapper {

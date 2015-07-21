@@ -8,17 +8,13 @@
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
-<!-- custom styles -->
-<link type="text/css" rel="stylesheet" href="../styles/style.css">
 <link href='http://fonts.googleapis.com/css?family=Chewy' rel='stylesheet' type='text/css'>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-<!-- google maps -->
-<script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTFdblSxSncsJfgeLFSMrzMuj1l7QZ82A">
-    </script>
+<!-- custom styles -->
+<link type="text/css" rel="stylesheet" href="../styles/style.css">
 
 <title>Me Eat Now!</title>
 </head>
@@ -65,16 +61,17 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#">
+                    <a href="#" id="list-title">
                         Delicious Restaurants
                     </a>
                 </li>
-                <div>
-                    <%= http://api.yelp.com/v2/search/ %>
+                <div id='rest-list'>
                 </div>
 
+                <div id="login">
                 <a href="login.html">Login / </a>
                 <a href="signup.html">Signup</a>
+                </div>
 
             </ul>
         </div>
@@ -83,9 +80,24 @@
 
    <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d12611.97624423334!2d-122.40623154999999!3d37.79017895!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1437102039033" width="300" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
 
-
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+
+<!-- custom script -->
+<script type="text/javascript" src="../scripts/scripts.js"></script>
+
+ <!-- underscore template -->
+  <script type="text/template" id="rest-template">
+    <div class="restaurant">
+      <p>
+        <%= name %> - <%= location %>
+      </p>
+      <hr>
+    </div>
+  </script>
+
 </body>
 
 </html>
