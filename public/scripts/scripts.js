@@ -24,36 +24,55 @@ $(function() {
 		});
 	});
 
-	$.get('/api/restaurants', function(data) {
-		_.each(data.businesses, function (restaurant, index) {
-			console.log(restaurant);
-			var $restList = $(restTemplate(restaurant));
-			$restList.attr('data-index', index);
-			$('#rest-list').append($restList);
-		});
-	});
-
+	// sign up form
 	$('#signup-form').submit(function(e) {
 		e.preventDefault();
 		console.log('Im submitting a form')
-		var user = {
-			text: $('#user-text').val()
+		var userData = {
+			email: $('#signup-email').val(),
+			password: $('#password').val()
 		}
-		$.post('/api/users', user, function(data) {
-			console.log(data)
-			$('#users').prepend($user(data))
+		$.ajax({
+			url: 'api/users',
+			type: 'POST',
+			data: userData,
+			success: function(data) {
+				console.log(data)
+			error: function() {
+				console.log('Error, can\'t sign new user')
+			};
 		});
 	});
 
-	$('#login-form').on('submit', function(event) {
+
+	$('#login-form').submit, function(e) {
+		console.log('form submitted');
+		e.preventDefault();
 		var userData = {
 			email: $('#login-user-email').val(),
 			password: $('#login-user-password').val()
 		};
-		$.post('/login', function(response) {
-			console.log(response);
+		$.post('/login', function(user) {
+			console.log(user);
 		});
 	});
+
+	// 	$.post('/api/login', user, function(data) {
+	// 		console.log(data)
+	// 		// $('#users').prepend($user(data))
+	// 	});
+	// });
+
+	// $.get('/api/restaurants', function(data) {
+	// 	_.each(data.businesses, function (restaurant, index) {
+	// 		console.log(restaurant);
+	// 		var $restList = $(restTemplate(restaurant));
+	// 		$restList.attr('data-index', index);
+	// 		$('#rest-list').append($restList);
+	// 	});
+	// });
+
+
 
 	// var options = {
 	//   enableHighAccuracy: true,

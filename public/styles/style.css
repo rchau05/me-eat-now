@@ -1,11 +1,9 @@
 h2{
 	color: white;
-    display: inline;
     font-family: 'Chewy', cursive;
-    margin-left: 2em;
-    text-align: center;
+    margin-right: 10em;
     vertical-align: center;
-    width:100%;
+    font-size: 1.5em;
 }
 
 iframe{
@@ -16,8 +14,15 @@ iframe{
 }
 
 .btn-group{
-    display: inline;
+    float: right;
+    clear: both;
     margin: 1em;
+}
+
+.dropdown-menu {
+    float: none;
+    margin-left: -9em;
+    margin-top: 1em;
 }
 
 .header, .navbar-header, .navbar {
@@ -26,6 +31,11 @@ iframe{
 	height: 5em;
 	border:none;
 	margin-bottom: 0px;
+}
+
+.input-group{
+    width: 45%;
+    margin-left: 13em;
 }
 
 .nav{
@@ -40,6 +50,10 @@ iframe{
 
 #search{
 	border-bottom: 4em;
+}
+
+#search-box{
+
 }
 
 #sidebar-wrapper{
@@ -148,10 +162,19 @@ h2{
 }
 
 @media(min-width:768px) {
+    h2{
+        font-size: 3em;
+        margin-left: 1em;
+    }
+
     .btn-group{
         display: none;
     }
 
+    .input-group{
+        width: 70%;
+        margin-right: 10em;
+    }
     .navbar-default{
         background-image: none;
         background-color: green!important;
@@ -185,6 +208,7 @@ h2{
     }
 
     #sidebar-wrapper {
+        text-align: center;
         width: 250px;
     }
 

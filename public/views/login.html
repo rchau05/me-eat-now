@@ -17,15 +17,15 @@
         <hr>
 
         <!-- note: method and action refer to the request type (post) and request url (/login) -->
-        <form method="post" action="/login">
+        <form method="POST" action="/login">
           <div class="form-group">
 
             <!-- note: the `name` HTML attribute sends form data to the server -->
             <!-- setting the names `user[email]` and `user[password]` allows us to use `req.body.user` on the server-side, which gives us a user object with `email` and `password` keys -->
-            <input type="email" name="user[email]" id="login-user-email" class="form-control" placeholder="Email" autofocus>
+            <input type="email" name="email" id="login-user-email" class="form-control" placeholder="Email" autofocus required>  <!--  data validated -->
           </div>
           <div class="form-group">
-            <input type="password" name="user[password]" id="login-user-password" class="form-control" placeholder="Password">
+            <input type="password" name="password" id="login-user-password" class="form-control" placeholder="Password" required> <!-- data validated -->
           </div>
           <div class="form-group">
             <input type="submit" value="Log In" class="btn btn-success">

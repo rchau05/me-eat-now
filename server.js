@@ -4,7 +4,7 @@ var express = require ('express'),
 	bodyParser = require('body-parser'),
 	session = require('express-session'),
 	_ = require('underscore'),
-	db = require('./models/user')
+	db = require('./models/user'),
 	cors = require('cors'),
 	config = require('./config'),
 	yelp = require("yelp").createClient({
@@ -23,7 +23,7 @@ app.use(session({
 
 mongoose.connect(config.MONGO_URI); 
 
-var User = require('./models/user')
+// var User = require('./models/user')
 
 // Middlewares
 app.use(bodyParser.urlencoded({extended: true}));
@@ -55,8 +55,7 @@ app.use('/', function (req, res, next) {
 
 
 app.get('/', function(req, res) {
-	var index = __dirname + '/public/views/index.html';
-	res.sendFile(index);
+	res.sendFile(__dirname + '/public/views/index.html')
 });
 
 app.get('/signup', function (req, res){
@@ -69,61 +68,55 @@ app.get('/signup', function (req, res){
 	});
 });
 
-// USER#CREATE
+
+// //user submits signup form
 app.post('/users', function (req, res) {
-	// console.log('server received signup form data: ', req.body.user);
-	var newUser = req.body.user;
-	db.User.createSecure(newUser.email,newUser.password, function (err, user) {
-		res.redirect('/');	
-	})
-})
+	db.User.createSecure(req.body.email, req.body.password, function (err, user) {
+		res.redirect('/login');
+	});
+});
+
+// user login
+app.post('/login', function (req, res) {
+	db.User.authenticate(req.body.email, req.body.password, function (err, user) {
+	  	req.login(user);
+	  	res.redirect('/welcome')
+	  	console.log('Welcome to your homepage')
+	});
+});
 
 app.get('/login', function (req, res){
 	req.currentUser(function(err,user){
 		if (user){
-			res.redirect('/')
+			res.redirect('/welcome')
 		}else {
 			res.sendFile(__dirname + '/public/views/login.html');		
 		}
 	})
 });
 
-app.post('/login', function (req, res) {
-	var userData =  req.body.user ;
-	db.User.authenticate(userData.email, userData.password, function (err, user) {
-	  	req.login(user);
-	  	res.redirect('/')
-	  	console.log('Welcome to your homepage')
-	});
-});
-
-
+// user profile/welcome page
 app.get('/welcome', function (req, res) {
 	req.currentUser(function (err, user) {
 		res.send('Welcome ' + user.email);
 	})
 })
 
-//USER#QUERY
-app.get('/api/users', function(req, res) {
-	console.log(User);
-	User.find().sort('-_id').exec(function(err, users) {
-		console.log(users);
-		res.json(users);
-	});
-});
 
-// USERS#CREATE
-app.post('/api/users', function(req, res) {
-	// save user to db
-	var user = new User({
-		text: req.body.text
-	});
 
-	user.save(function(err, user) {
-		res.redirect('/login')
-	});
-});
+
+
+
+
+// //USER#QUERY
+// app.get('/api/users', function(req, res) {
+// 	console.log(User);
+// 	User.find().sort('-_id').exec(function(err, users) {
+// 		console.log(users);
+// 		res.json(users);
+// 	});
+// });
+
 
 
 // app.get('/currentUser', (function (req, res) {
@@ -134,13 +127,7 @@ app.post('/api/users', function(req, res) {
 
 
 
-// //user submits signup form
-// app.post('/users', function (req, res) {
-// 	var newUser = req.body.user;
-// 	User.createSecure(newUser.email, newUser.password, function (err, user) {
-// 		res.send(user);
-// 	});
-// });
+
 
 app.get('/api/restaurants/:q', function(req, res){
 	var searchResults = req.params.q;

@@ -22,11 +22,11 @@
 
             <!-- note: the `name` HTML attribute sends form data to the server -->
             <!-- setting the names `user[email]` and `user[password]` allows us to use `req.body.user` on the server-side, which gives us a user object with `email` and `password` keys -->
-            <input type="email" name="user[email]" id='signup-form' class="form-control" placeholder="Email" autofocus>
+            <input type="email" name="email" id='signup-email' class="form-control" placeholder="Email" autofocus>
           </div>
 
           <div class="form-group">
-            <input type="password" name="[password]" id='signup-form' class="form-control" placeholder="Password">
+            <input type="password" name="password" id='signup-password' class="form-control" placeholder="Password">
           </div>
 
          <!--  <div class="form-group">
