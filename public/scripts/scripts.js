@@ -2,14 +2,27 @@ $(function() {
 
 	var restTemplate = _.template($('#rest-template').html());
 
-	// var restaurants = [
-	// 	{name: "Restaurant1", location:"123 Fake St."},
-	// 	{name: "Restaurant2", location:"456 Faker St."},
-	// 	{name: "Restaurant3", location:"789 Fakest St."},
-	// 	{name: "Restaurant4", location:"000 Fakerest St."},
-	// 	{name: "Restaurant5", location:"666 Fakestest St."},
-	// 	{name: "Restaurant6", location:"042 Fakest infinity + 1 St."}
-	// ];
+	$('#search-box').submit(function(e) {
+		e.preventDefault();
+		console.log('form submitted: now searching')
+		var searchResult = {
+			text: $('#search-input').val()
+		}
+		$.post('/', searchResult).done(function(data) {
+			console.log('I finished');
+			console.log(data);
+	
+		// Append data location, name to the list side-bar
+		//for each function going through all the data and just appending the name and the location
+		_.each(data.businesses, function (restaurant, index) {
+			console.log(restaurant);
+			var $resultList = $(restTemplate(restaurant));
+			$resultList.attr('data-index', index);
+			$('#rest-list').append($resultList);
+			console.log('restaurants posted!')
+			});
+		});
+	});
 
 	$.get('/api/restaurants', function(data) {
 		_.each(data.businesses, function (restaurant, index) {
@@ -18,9 +31,29 @@ $(function() {
 			$restList.attr('data-index', index);
 			$('#rest-list').append($restList);
 		});
-		console.log(restaurants)
 	});
 
+	$('#signup-form').submit(function(e) {
+		e.preventDefault();
+		console.log('Im submitting a form')
+		var user = {
+			text: $('#user-text').val()
+		}
+		$.post('/api/users', user, function(data) {
+			console.log(data)
+			$('#users').prepend($user(data))
+		});
+	});
+
+	$('#login-form').on('submit', function(event) {
+		var userData = {
+			email: $('#login-user-email').val(),
+			password: $('#login-user-password').val()
+		};
+		$.post('/login', function(response) {
+			console.log(response);
+		});
+	});
 
 	// var options = {
 	//   enableHighAccuracy: true,
@@ -43,5 +76,8 @@ $(function() {
 
 	// navigator.geolocation.getCurrentPosition(success, error, options);
 
+// grab input
+// save onto server
+// append it to sidebar
 
 });
