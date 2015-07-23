@@ -14,15 +14,15 @@ $(function() {
 	
 		// Append data location, name to the list side-bar
 		//for each function going through all the data and just appending the name and the location
-		_.each(data.businesses, function (restaurant, index) {
-			console.log(restaurant);
-			var $resultList = $(restTemplate(restaurant));
-			$resultList.attr('data-index', index);
-			$('#rest-list').append($resultList);
-			console.log('restaurants posted!')
-			});
-		});
-	});
+	// 	_.each(data.businesses, function (restaurant, index) {
+	// 		console.log(restaurant);
+	// 		var $resultList = $(restTemplate(restaurant));
+	// 		$resultList.attr('data-index', index);
+	// 		$('#rest-list').append($resultList);
+	// 		console.log('restaurants posted!')
+	// 		});
+	// 	});
+	// });
 
 	// sign up form
 	$('#signup-form').submit(function(e) {
@@ -32,17 +32,17 @@ $(function() {
 			email: $('#signup-email').val(),
 			password: $('#password').val()
 		}
-		$.ajax({
-			url: 'api/users',
-			type: 'POST',
-			data: userData,
-			success: function(data) {
-				console.log(data)
-			error: function() {
-				console.log('Error, can\'t sign new user')
-			};
-		});
-	});
+	// 	$.ajax({
+	// 		url: 'api/users',
+	// 		type: 'POST',
+	// 		data: userData,
+	// 		success: function(data) {
+	// 			console.log(data)
+	// 		error: function() {
+	// 			console.log('Error, can\'t sign new user')
+	// 		};
+	// 	});
+	// });
 
 
 	$('#login-form').submit, function(e) {
@@ -57,20 +57,15 @@ $(function() {
 		});
 	});
 
-	// 	$.post('/api/login', user, function(data) {
-	// 		console.log(data)
-	// 		// $('#users').prepend($user(data))
-	// 	});
-	// });
 
-	// $.get('/api/restaurants', function(data) {
-	// 	_.each(data.businesses, function (restaurant, index) {
-	// 		console.log(restaurant);
-	// 		var $restList = $(restTemplate(restaurant));
-	// 		$restList.attr('data-index', index);
-	// 		$('#rest-list').append($restList);
-	// 	});
-	// });
+	$.get('/api/restaurants', function(data) {
+		_.each(data.businesses, function (restaurant, index) {
+			console.log(restaurant);
+			var $restList = $(restTemplate(restaurant));
+			$restList.attr('data-index', index);
+			$('#rest-list').append($restList);
+		});
+	});
 
 
 
