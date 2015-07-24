@@ -130,5 +130,5 @@ app.post('/search', function(req, res) {
 });
 
 app.listen(process.env.PORT || require('./config').PORT, function() {
-	console.log('server starting');
+	console.log('server starting')
 });
