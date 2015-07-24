@@ -9,10 +9,7 @@ $(function() {
 			lng: data.region.center.longitude
 		});
 
-
-		// _each(makeMap, function(data.businesses[0], name, location[0], rating, price, image_url;)){
-		// 	map.append(closeRestaurants)
-		// }
+// loop through businesses and displaying each to sidebar
 		_.each(data.businesses, function(business){
 			map.addMarker({
 				lat: business.location.coordinate.latitude,
@@ -26,14 +23,6 @@ $(function() {
 		
 	}
 
-
-	// _.each(data.businesses, function (addMarker) {
-	// 	console.log(restaurant);
-	// 	var $resultList = $(restTemplate(restaurant));
-	// 	$resultList.attr('data-index', index);
-	// 	$('#rest-list').append(map);
-	// 	console.log('restaurants posted!')
-	// });
 
 
 	var restTemplate = _.template($('#rest-template').html());
