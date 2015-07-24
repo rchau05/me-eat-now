@@ -21,7 +21,7 @@
     "express": "^4.13.1",
     "express-session": "^1.11.3",
     "mocha": "^2.2.5",
-    "mongoose": "^4.0.7",
+    "mongoose": "^4.0.8",
     "request": "^2.60.0",
     "underscore": "^1.8.3",
     "yelp": "^0.2.0"
