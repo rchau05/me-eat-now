@@ -1,0 +1,30 @@
+{
+  "name": "meEatNow",
+  "version": "0.0.0",
+  "homepage": "https://github.com/rchau05/me-eat-now",
+  "authors": [
+    "rchau05 <rnchau@mail.sfsu.edu>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bcrypt": "^0.8.3",
+    "body-parser": "^1.13.2",
+    "chai": "^3.2.0",
+    "cheerio": "^0.19.0",
+    "cors": "^2.7.1",
+    "express": "^4.13.1",
+    "express-session": "^1.11.3",
+    "mocha": "^2.2.5",
+    "mongoose": "^4.0.8",
+    "request": "^2.60.0",
+    "underscore": "^1.8.3",
+    "yelp": "^0.2.0"
+  }
+}
