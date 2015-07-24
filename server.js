@@ -18,11 +18,11 @@ var express = require ('express'),
 app.use(session({
 	saveUninitialized: true,
 	resave: true,
-	secret: config.SESSION_SECRET,
+	secret: 'GreenSecret',
 	cookie: {maxAge:60000}
 }));
 
-mongoose.connect(config.MONGO_URI); 
+mongoose.connect(require('./config').MONGO_URI); 
 
 // var User = require('./models/user')
 
@@ -129,5 +129,6 @@ app.post('/search', function(req, res) {
 	});	
 });
 
-app.listen(process.env.PORT|| require('./config').PORT, function() {
+app.listen(process.env.PORT || require('./config').PORT, function() {
 	console.log('server starting');
+});
