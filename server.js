@@ -79,15 +79,19 @@ app.post('/users', function (req, res) {
 // user login
 app.post('/login', function (req, res) {
 	db.User.authenticate(req.body.email, req.body.password, function (err, user) {
-	  	req.login(user);
-	  	res.redirect('/welcome')
-	  	console.log('Welcome to your homepage')
+		if(user) {
+			req.login(user);
+	  		res.redirect('/welcome')
+	  		console.log('Welcome to your homepage')
+		} else {
+			res.redirect('/login')
+	}
 	});
 });
 
 app.get('/login', function (req, res){
 	req.currentUser(function(err,user){
-		if (user){
+		if (user === req.currentUser){
 			res.redirect('/welcome')
 		}else {
 			res.sendFile(__dirname + '/public/views/login.html');		
@@ -103,32 +107,7 @@ app.get('/welcome', function (req, res) {
 })
 
 
-
-
-
-
-
-// //USER#QUERY
-// app.get('/api/users', function(req, res) {
-// 	console.log(User);
-// 	User.find().sort('-_id').exec(function(err, users) {
-// 		console.log(users);
-// 		res.json(users);
-// 	});
-// });
-
-
-
-// app.get('/currentUser', (function (req, res) {
-// 	req.currentUser(function (err, user) {
-// 		res.json(user);
-// 	});
-// });
-
-
-
-
-
+//RESTAURANT SEARCH ENGINE
 app.get('/api/restaurants/:q', function(req, res){
 	var searchResults = req.params.q;
 		console.log(searchResults);
@@ -138,11 +117,11 @@ app.get('/api/restaurants/:q', function(req, res){
 	console.log('oh hi!')
 });
 
-app.post('/', function(req, res) {
+app.post('/search', function(req, res) {
 	console.log('hello');
 	console.log(req.body);
 	yelp.search({term: req.body.text, location: 'san+francisco', limit: '15'}, function(error, data) {
-		res.send(data);
+		res.json(data);
 	});	
 });
 
