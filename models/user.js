@@ -9,7 +9,7 @@ var UserSchema = new Schema({
 	passwordDigest: String
 });
 	
-	//@AUTH
+	//@AUTH create security for signup
 UserSchema.statics.createSecure = function (email, password, callback) {
 	// 'this' references out Schema
 	var that = this;
