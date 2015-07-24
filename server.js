@@ -14,6 +14,7 @@ var express = require ('express'),
       	token_secret: 'AYk85EXQ12yVfP1xfKp5Agy-Lc4'
      });
 
+//requiring user express-sessions
 app.use(session({
 	saveUninitialized: true,
 	resave: true,
@@ -53,11 +54,12 @@ app.use('/', function (req, res, next) {
 	next(); //required for middleware
 });
 
-
+//Route to homepage on localhost
 app.get('/', function(req, res) {
 	res.sendFile(__dirname + '/public/views/index.html')
 });
 
+//route to signup page
 app.get('/signup', function (req, res){
 	req.currentUser(function(err, user) {
 		if(user) {
@@ -76,7 +78,7 @@ app.post('/users', function (req, res) {
 	});
 });
 
-// user login
+// user submits login and gets authentication
 app.post('/login', function (req, res) {
 	db.User.authenticate(req.body.email, req.body.password, function (err, user) {
 		if(user) {
@@ -89,6 +91,7 @@ app.post('/login', function (req, res) {
 	});
 });
 
+// route to login page
 app.get('/login', function (req, res){
 	req.currentUser(function(err,user){
 		if (user === req.currentUser){
@@ -117,6 +120,7 @@ app.get('/api/restaurants/:q', function(req, res){
 	console.log('oh hi!')
 });
 
+// user enters restaurant names and returns json files and search results on map
 app.post('/search', function(req, res) {
 	console.log('hello');
 	console.log(req.body);
