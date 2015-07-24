@@ -9,20 +9,31 @@ $(function() {
 			lng: data.region.center.longitude
 		});
 
-		_each(makeMap, function(data.businesses[0], name, location[0], rating, price, image_url;)){
-			map.append(closeRestaurants)
-		}
 
-		map.addMarker({
-			lat: data.businesses[0].location.coordinate.latitude,
-			lng: data.businesses[0].location.coordinate.longitude,
-			title: 'Find It, Eat It!',	
-			click: function(e) {
-				alert(data.businesses[0].name);
-			}
-		});
+		// _each(makeMap, function(data.businesses[0], name, location[0], rating, price, image_url;)){
+		// 	map.append(closeRestaurants)
+		// }
+		_.each(data.businesses, function(business){
+			map.addMarker({
+				lat: business.location.coordinate.latitude,
+				lng: business.location.coordinate.longitude,
+				title: 'Find It, Eat It!',	
+			    infoWindow:{
+        		content: '<p>Restaurants</p>'
+    			}
+			});
+		})
+		
 	}
 
+
+	// _.each(data.businesses, function (addMarker) {
+	// 	console.log(restaurant);
+	// 	var $resultList = $(restTemplate(restaurant));
+	// 	$resultList.attr('data-index', index);
+	// 	$('#rest-list').append(map);
+	// 	console.log('restaurants posted!')
+	// });
 
 
 	var restTemplate = _.template($('#rest-template').html());
@@ -39,18 +50,19 @@ $(function() {
 			console.log('I finished');
 			console.log(data);
 			makeMap(data);
+
+			_.each(data.businesses, function (restaurant, index) {
+				console.log(restaurant);
+				var $resultList = $(restTemplate(restaurant));
+				$resultList.attr('data-index', index);
+				$('#rest-list').append($resultList);
+				console.log('restaurants posted!')
+			});
 		})
 	// Append data location, name to the list side-bar
 	//for each function going through all the data and just appending the name and the location
-	_.each(data.businesses, function (restaurant, index) {
-		console.log(restaurant);
-		var $resultList = $(restTemplate(restaurant));
-		$resultList.attr('data-index', index);
-		$('#rest-list').append($resultList);
-		console.log('restaurants posted!')
-	});
+	
 });
-
 
 	// $('#login-form').submit(function(e) {
 	// 	console.log('form submitted');
@@ -67,6 +79,20 @@ $(function() {
 	// $('#logout').submit(function() {
 
 	// })
+	var intro = {
+			region: 
+				{
+					center: 
+						{
+							latitude: 37.7909317,
+							longitude: -122.4016418
 
-
+						}
+				}
+		};
+		
+	console.log(makeMap);
+	makeMap(intro);
 });
+
+

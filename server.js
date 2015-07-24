@@ -101,7 +101,7 @@ app.get('/login', function (req, res){
 
 // user profile/welcome page
 app.get('/welcome', function (req, res) {
-	req.currentUser(function (err, user) {
+	req.currentUser(function (err, user) { 	
 		res.send('Welcome ' + user.email);
 	})
 })
