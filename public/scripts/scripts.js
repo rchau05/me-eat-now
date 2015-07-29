@@ -16,9 +16,9 @@ $(function() {
 				lat: business.location.coordinate.latitude,
 				lng: business.location.coordinate.longitude,
 				title: 'Find It, Eat It!'	
-			    // infoWindow:{
+			    infoWindow:{
         		content: '<p><br>Awesome Restaurant <br> Price : $$$$ <br> Ratings : 5</p>'
-    			// }
+    			}
 			});
 		})
 		
