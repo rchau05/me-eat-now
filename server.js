@@ -22,9 +22,9 @@ app.use(session({
 	cookie: {maxAge:60000}
 }));
 
-mongoose.connect(require('./config').MONGO_URI); 
+// mongoose.connect(require('./config').MONGO_URI); 
 
-// var User = require('./models/user')
+var User = require('./models/user')
 
 // Middlewares
 app.use(bodyParser.urlencoded({extended: true}));
@@ -83,6 +83,7 @@ app.post('/login', function (req, res) {
 	db.User.authenticate(req.body.email, req.body.password, function (err, user) {
 		if(user) {
 			req.login(user);
+	  		// res.sendFile(__dirname + '/public/views/welcome.html')
 	  		res.redirect('/welcome')
 	  		console.log('Welcome to your homepage')
 		} else {
@@ -104,11 +105,18 @@ app.get('/login', function (req, res){
 
 // user profile/welcome page
 app.get('/welcome', function (req, res) {
-	req.currentUser(function (err, user) { 	
-		res.send('Welcome ' + user.email);
+	req.currentUser(function (err, user) { 
+	res.sendFile(__dirname + '/public/views/welcome.html')	
+	console.log('Welcome to your page!')
 	})
 })
 
+app.get('/logout', function(req, res) {
+	req.logout(function (err, user) {
+	res.redirect('/')
+	alert('logged out')
+	}) 
+})
 
 //RESTAURANT SEARCH ENGINE
 app.get('/api/restaurants/:q', function(req, res){

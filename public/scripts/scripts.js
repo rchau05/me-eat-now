@@ -15,10 +15,10 @@ $(function() {
 			map.addMarker({
 				lat: business.location.coordinate.latitude,
 				lng: business.location.coordinate.longitude,
-				title: 'Find It, Eat It!',	
-			    infoWindow:{
-        		content: '<p> <img src=https://secure.gravatar.com/avatar/f2f0cff2a7f6c10ae90cb133b9ec776e.jpg?s=72&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F3654%2Fimg%2Favatars%2Fava_0010-72.png <br>Awesome Restaurant <br> Price : $$$$ <br> Ratings : 5</p>'
-    			}
+				title: 'Find It, Eat It!'	
+			    // infoWindow:{
+        		// content: '<p> <img src=https://secure.gravatar.com/avatar/f2f0cff2a7f6c10ae90cb133b9ec776e.jpg?s=72&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F3654%2Fimg%2Favatars%2Fava_0010-72.png <br>Awesome Restaurant <br> Price : $$$$ <br> Ratings : 5</p>'
+    			// }
 			});
 		})
 		
