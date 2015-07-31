@@ -15,9 +15,9 @@ $(function() {
 			map.addMarker({
 				lat: business.location.coordinate.latitude,
 				lng: business.location.coordinate.longitude,
-				title: 'Find It, Eat It!'	
-			    infoWindow:{
-        		content: '<p><br>Awesome Restaurant <br> Price : $$$$ <br> Ratings : 5</p>'
+				title: 'Find It, Eat It!',	
+			    infoWindow: { 
+			    	content: '<p><br>Awesome Restaurant <br> Price : $$$$ <br> Ratings : 5</p>'
     			}
 			});
 		})
