@@ -6,7 +6,7 @@ var express = require ('express'),
 	_ = require('underscore'),
 	db = require('./models/user'),
 	cors = require('cors'),
-	config = require('./config'),
+	// config = require('./config'),
 	yelp = require("yelp").createClient({
       	consumer_key: 'VLtNYxt_FA73JfmfrogIug',
       	consumer_secret: 'eh9OnaQ-3Wf7w-QcC-g8srocovM',
