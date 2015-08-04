@@ -17,7 +17,7 @@ $(function() {
 				lng: business.location.coordinate.longitude,
 				title: 'Find It, Eat It!',	
 			    infoWindow: { 
-			    	content: '<p><br>Awesome Restaurant <br> Price : $$$$ <br> Ratings : 5</p>'
+			    	content: '<p>Awesome Restaurant <br> Price : $$$$ <br> Ratings : 5</p>'
     			}
 			});
 		})
@@ -69,5 +69,3 @@ $(function() {
 	console.log(makeMap);
 	makeMap(intro);
 });
-
-

@@ -6,7 +6,7 @@ var express = require ('express'),
 	_ = require('underscore'),
 	db = require('./models/user'),
 	cors = require('cors'),
-	config = require('./config'),
+	// config = require('./config'),
 	yelp = require("yelp").createClient({
       	consumer_key: 'VLtNYxt_FA73JfmfrogIug',
       	consumer_secret: 'eh9OnaQ-3Wf7w-QcC-g8srocovM',
@@ -14,15 +14,21 @@ var express = require ('express'),
       	token_secret: 'AYk85EXQ12yVfP1xfKp5Agy-Lc4'
      });
 
+if (process.env.PORT) {
+  var config = process.env;
+} else {
+  var config = require('./config');
+};
+
 //requiring user express-sessions
 app.use(session({
 	saveUninitialized: true,
 	resave: true,
-	secret: 'GreenSecret',
+	secret: config.SESSION_SECRET,
 	cookie: {maxAge:60000}
 }));
 
-mongoose.connect(require('./config').MONGO_URI); 
+mongoose.connect(config.MONGOLAB_URI); 
 
 var User = require('./models/user')
 
@@ -137,6 +143,7 @@ app.post('/search', function(req, res) {
 	});	
 });
 
-app.listen(process.env.PORT || require('./config').PORT, function() {
+app.listen(process.env.PORT || config.PORT, function() {
 	console.log('server starting')
 });
+// app.listen(config.PORT);
